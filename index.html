@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Valentine's Day</title>
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <div class="video-container">
+        <video autoplay muted loop id="background-video">
+            <source src="cat-sakura-street-pixel-moewalls-com.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="envelope">
+        <div class="heart heart1"></div>
+        <div class="heart heart2"></div>
+        <div class="heart heart3"></div>
+        <div class="heart heart4"></div>
+    </div>
+    <button class="open-button">💌 Open Letter</button>
+
+    <div class="love-letter">
+        <h2>Dear Beloved,</h2>
+        <p>On this special day, I just wanted to say how much I love you.</p>
+        <p>Know that you are not alone muwa muwa chup chup.</p>
+        <p>Happy Valentines</p>
+        <form action="https://getform.io/f/ayvkpnrb" method="POST" class="love-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('.open-button').addEventListener('click', function () {
+            const loveLetter = document.querySelector('.love-letter');
+            loveLetter.style.display = 'block';
+            setTimeout(function () {
+                loveLetter.style.opacity = '1';
+                loveLetter.style.transform = 'translateX(-50%) translateY(0)';
+            }, 50);
+            document.querySelector('.envelope').style.display = 'none';
+            document.querySelector('.open-button').style.display = 'none';
+        });
+
+        document.querySelector('.open-button').addEventListener('click', function () {
+            // Display the love letter with animation
+            const loveLetter = document.querySelector('.love-letter');
+            loveLetter.style.display = 'block';
+
+            setTimeout(() => {
+                loveLetter.style.opacity = '1';
+                loveLetter.style.transform = 'translateX(-50%) translateY(0)';
+            }, 50);
+
+            // Hide the envelope and button
+            document.querySelector('.envelope').style.display = 'none';
+            document.querySelector('.open-button').style.display = 'none';
+
+            // Trigger floating hearts, flowers, and balloons animation
+            const items = ["❤️", "🌸", "🎈", "💖", "💐", "🎀"];
+
+            for (let i = 0; i < 10; i++) {
+                createFloatingItem(items[Math.floor(Math.random() * items.length)]);
+            }
+        });
+
+        // Function to create floating hearts, flowers, and balloons
+        function createFloatingItem(symbol) {
+            const floatingItem = document.createElement("div");
+            floatingItem.textContent = symbol;
+            floatingItem.classList.add("floating-item");
+
+            // Random positioning near the button
+            const x = Math.random() * window.innerWidth;
+            const y = window.innerHeight - 100; // Start near bottom
+
+            floatingItem.style.left = `${x}px`;
+            floatingItem.style.top = `${y}px`;
+
+            document.body.appendChild(floatingItem);
+
+            setTimeout(() => floatingItem.remove(), 3000); // Remove after animation
+        }
+
+    </script>
+</body>
+
+</html>
