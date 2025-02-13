@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #background-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            color: white;
+            text-align: center;
+        }
+
+        .envelope {
+            width: 400px;
+            height: 240px;
+            background-color: #ffebee;
+            border: 2px solid #e57373;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-bottom: 40px solid #e57373;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #d32f2f;
+            transform: rotate(45deg);
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #d32f2f;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: -10px;
+        }
+
+        .heart1 {
+            top: 20px;
+            left: 20px;
+        }
+
+        .heart2 {
+            top: 20px;
+            right: 20px;
+        }
+
+        .heart3 {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .heart4 {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .open-button {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #e57373;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            z-index: 3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .open-button:hover {
+            background-color: #c62828;
+        }
+
+        .love-letter {
+            display: none;
+            margin-top: 20px;
+            background-color: #fff0f5;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #e57373;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #333;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease-out;
+        }
+
+        .love-letter h2 {
+            color: #d32f2f;
+        }
+
+        .love-letter p {
+            font-size: 18px;
+        }
+
+        .love-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Centers the form elements */
+            justify-content: center;
+            width: 100%;
+        }
+
+        .love-form input,
+        .love-form textarea,
+        .love-form button {
+            display: block;
+            width: 75%;
+            margin: 10px auto;
+            /* Centers the elements horizontally */
+            padding: 10px;
+            border: 1px solid #e57373;
+            border-radius: 5px;
+        }
+
+        /* Floating hearts, flowers, and balloons animation */
+        .floating-item {
+            position: fixed;
+            font-size: 24px;
+            animation: floatUp 3s ease-out forwards;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-150px) scale(1.5);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-container">
+        <video autoplay muted loop id="background-video">
+            <source src="cat-sakura-street-pixel-moewalls-com.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="envelope">
+        <div class="heart heart1"></div>
+        <div class="heart heart2"></div>
+        <div class="heart heart3"></div>
+        <div class="heart heart4"></div>
+    </div>
+    <button class="open-button">💌 Open Letter</button>
+
+    <div class="love-letter">
+        <h2>Dear Beloved,</h2>
+        <p>On this special day, I just wanted to say how much I love you.</p>
+        <p>Know that you are not alone muwa muwa chup chup.</p>
+        <p>Happy Valentines</p>
+        <form action="https://getform.io/f/ayvkpnrb" method="POST" class="love-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('.open-button').addEventListener('click', function () {
+            const loveLetter = document.querySelector('.love-letter');
+            loveLetter.style.display = 'block';
+            setTimeout(function () {
+                loveLetter.style.opacity = '1';
+                loveLetter.style.transform = 'translateX(-50%) translateY(0)';
+            }, 50);
+            document.querySelector('.envelope').style.display = 'none';
+            document.querySelector('.open-button').style.display = 'none';
+        });
+
+        document.querySelector('.open-button').addEventListener('click', function () {
+            // Display the love letter with animation
+            const loveLetter = document.querySelector('.love-letter');
+            loveLetter.style.display = 'block';
+
+            setTimeout(() => {
+                loveLetter.style.opacity = '1';
+                loveLetter.style.transform = 'translateX(-50%) translateY(0)';
+            }, 50);
+
+            // Hide the envelope and button
+            document.querySelector('.envelope').style.display = 'none';
+            document.querySelector('.open-button').style.display = 'none';
+
+            // Trigger floating hearts, flowers, and balloons animation
+            const items = ["❤️", "🌸", "🎈", "💖", "💐", "🎀"];
+
+            for (let i = 0; i < 10; i++) {
+                createFloatingItem(items[Math.floor(Math.random() * items.length)]);
+            }
+        });
+
+        // Function to create floating hearts, flowers, and balloons
+        function createFloatingItem(symbol) {
+            const floatingItem = document.createElement("div");
+            floatingItem.textContent = symbol;
+            floatingItem.classList.add("floating-item");
+
+            // Random positioning near the button
+            const x = Math.random() * window.innerWidth;
+            const y = window.innerHeight - 100; // Start near bottom
+
+            floatingItem.style.left = `${x}px`;
+            floatingItem.style.top = `${y}px`;
+
+            document.body.appendChild(floatingItem);
+
+            setTimeout(() => floatingItem.remove(), 3000); // Remove after animation
+        }
+
+    </script>
+</body>
+
+</html>
